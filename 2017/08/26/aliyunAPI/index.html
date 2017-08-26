@@ -12,7 +12,7 @@
     
     <title>
         
-            CockroachDB在docker下使用方法 | 
+            GO语言调用阿里云API方法 | 
         
         Yztian&#39;s blog
     </title>
@@ -37,8 +37,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Yztian">
-    <meta name="description" itemprop="description" content="Docker is a good friend！">
-    <meta name="keywords" content=",教程">
+    <meta name="description" itemprop="description" content="  本文以新闻头条API为例介绍">
+    <meta name="keywords" content=",go,教程">
 
     <!-- Site Verification -->
     
@@ -67,26 +67,26 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yztian.top">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="CockroachDB在docker下使用方法 | Yztian&#39;s blog">
+    <meta property="og:title" content="GO语言调用阿里云API方法 | Yztian&#39;s blog">
     <meta property="og:image" content="/img/avatar1.png" />
-    <meta property="og:description" content="Docker is a good friend！">
-    <meta property="og:article:tag" content="教程"> 
+    <meta property="og:description" content="  本文以新闻头条API为例介绍">
+    <meta property="og:article:tag" content="go"> <meta property="og:article:tag" content="教程"> 
 
     
-        <meta property="article:published_time" content="Fri Aug 25 2017 13:10:36 GMT+0800" />
-        <meta property="article:modified_time" content="Fri Aug 25 2017 20:42:08 GMT+0800" />
+        <meta property="article:published_time" content="Sat Aug 26 2017 18:52:05 GMT+0800" />
+        <meta property="article:modified_time" content="Sat Aug 26 2017 20:57:24 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="CockroachDB在docker下使用方法 | Yztian&#39;s blog">
-    <meta name="twitter:description" content="Docker is a good friend！">
+    <meta name="twitter:title" content="GO语言调用阿里云API方法 | Yztian&#39;s blog">
+    <meta name="twitter:description" content="  本文以新闻头条API为例介绍">
     <meta name="twitter:image" content="/img/avatar1.png">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="http://yztian.top" />
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yztian.top/2017/08/25/CockroachDB/index.html" />
+        <link rel="canonical" href="http://yztian.top/2017/08/26/aliyunAPI/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -112,11 +112,11 @@
         },
         "description": "深自缄默，如云漂泊。"
     },
-    "headline": "CockroachDB在docker下使用方法",
-    "url": "http://yztian.top/2017/08/25/CockroachDB/index.html",
-    "datePublished": "Fri Aug 25 2017 13:10:36 GMT+0800",
-    "dateModified": "Fri Aug 25 2017 20:42:08 GMT+0800",
-    "description": "Docker is a good friend！",
+    "headline": "GO语言调用阿里云API方法",
+    "url": "http://yztian.top/2017/08/26/aliyunAPI/index.html",
+    "datePublished": "Sat Aug 26 2017 18:52:05 GMT+0800",
+    "dateModified": "Sat Aug 26 2017 20:57:24 GMT+0800",
+    "description": "  本文以新闻头条API为例介绍",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://yztian.top"
@@ -337,7 +337,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CockroachDB"><span class="post-toc-number">1.</span> <span class="post-toc-text">CockroachDB</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#docker-安装："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">docker 安装：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">运行：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#进入："><span class="post-toc-number">1.3.</span> <span class="post-toc-text">进入：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建用户"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">创建用户:</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用户授权"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">用户授权:</span></a></li></ol></li></ol>
+        
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -362,20 +362,11 @@
                 
     <!-- Paradox Post Header -->
     
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-            <script type="text/ls-javascript" id="post-thumbnail-script">
-    var randomNum = Math.floor(Math.random() * 19 + 1);
-
-    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-</script>
-
-        
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/aliyun.png)">
     
             <p class="article-headline-p">
-                CockroachDB在docker下使用方法
+                GO语言调用阿里云API方法
             </p>
         </div>
 
@@ -394,7 +385,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Yztian</strong>
-        <span>8月 25, 2017</span>
+        <span>8月 26, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -416,7 +407,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACYElEQVR42u3aQW6DQAwFUO5/6XZbqQ35tpmBRo9VREiYNwuwvn18ffRx4OHh4eHh4eHhPYx3xMcff9T69ueZ359fncnXhoeHh7eH9+ZRGyzx1TUJ5vya8trw8PDwNvImt+wt8c0jvrg2PDw8vOfzzkvq5CFevS8eHh7e/+WdhwJ5kFGNLfDw8PCexkse6AksL7gn5TgeHh7evby8ybT/89b+Hh4eHl7AK480JUVt8G01yGgOXeHh4eEt4FWDhiQaSK6fvxjw8PDw7uUVflyE5SMC823Cw8PD28nrYSaRQR77VkcW8PDw8Hby5mNPeassYeRxMx4eHt5dvEkEcFVQm29fczICDw8P7yLeZBH5oFW1Vda7Ox4eHt5qXl5YT2LWpFAuhw5JGIGHh4e3gNdrYuXn56XzkskIPDw8vIt4vdZX/mJIxg56Qwl4eHh4+3nVx3q+Bb1xgZyKh4eHdy+v+nfJb6uwZFPKQ1d4eHh4y3jVRtT8+rwlNhq6wsPDw7uUl5fIeYhQLdOTX+UjDnh4eHireZMGWG9BOb55Bg8PD28jLy9t8zij95/J1peHrvDw8PAW8KqDUJNRg/z66gAWHh4e3n5etTjOy+5JqJGHxXh4eHiredWjWgpPml7NEh8PDw9vMa/3UJ4Ms+ahcF5q4+Hh4e3nVV8GOT7fuGoEXA4j8PDw8BbwqtFqPkZQLbgn24GHh4f3fF4VX110fhc8PDy85/N6+N4rISm78fDw8PbzkjCi16YqR7GDMQI8PDy8PbyrSt5ey6pHWtLfw8PDwwt4n3fg4eHh4eHh4eE94PgGE1wf60Rv/V0AAAAASUVORK5CYII=">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACW0lEQVR42u3aQY7CMAwFUO5/6ZntSKPCt52kFXpdVVBKHova/Pj189XHCw8PDw8PDw8P72G8V3x8uOnFNf9ff3/l33d7a8PDw8M7w5ss/fJrLpbbO8/XhoeHh3eSd7XcfUt8f2V1bXh4eHhP5uWN8qTA4OHh4X0TL2G8DzJ6LTgeHh7e03jzxndV63xb1oKHh4cX8/JNpvPnR/f38PDw8AJe9VhVBiahxodvx8PDw9vMyx/EeZSQvJsHDdUhMDw8PLzdvH0hbA+fbLONWmo8PDy8zbxkyz9/9PeGCfLxBTw8PLyTvF40kDff89Y8b6zx8PDwdvN6S5yQesMEhR8IDw8P7wgvLxL5UFQvXMhDisJkBB4eHt42XnJeffSvKh6FT+Hh4eHdxKu2tsndqjFuNYbAw8PDu4uXRw+T2CLf3CoXDzw8PLwjvOoDulcGqk38sjACDw8PbymvF7Mm21HVQYHqD7FsMgIPDw+vyCs/dostb29oIG/W8fDw8M7zegtKgoakMCRLLxcbPDw8vM28yZZVD1ltuMuv4OHh4R3nrd2+ytvl3t0Wjw7g4eHhFXm98tCLX6sDr+9jZTw8PLy7eJNtsAlpcj0eHh7eeV4v0q2WkzyK7Y0R4OHh4Z3kveIjj3ST9ndj5IGHh4d3hLdq0ysfC5j/lOV/DHh4eHgbePOxpyQ4yO/QHO3Cw8PDezAvaZerEUby2Q/NOh4eHt4jedWgYV4SkhgCDw8P7zyvOmKVF4ZyFNsKLPDw8PBO8noRQHUMKydNkHh4eHi7ed934OHh4eHh4eHhPeD4BfgszkoktJd0AAAAAElFTkSuQmCC">
     
 </ul>
     
@@ -429,7 +420,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/教程/">教程</a>
+        <a class="post_tag-link" href="/tags/go/">go</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/教程/">教程</a>
     </ul>
     
 
@@ -456,7 +447,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CockroachDB在docker下使用方法&url=http://yztian.top/2017/08/25/CockroachDB/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=GO语言调用阿里云API方法&url=http://yztian.top/2017/08/26/aliyunAPI/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -468,7 +459,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yztian.top/2017/08/25/CockroachDB/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yztian.top/2017/08/26/aliyunAPI/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -483,7 +474,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Yztian&#39;s blog&title=CockroachDB在docker下使用方法&summary=&pics=http://yztian.top/img/avatar1.png&url=http://yztian.top/2017/08/25/CockroachDB/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Yztian&#39;s blog&title=GO语言调用阿里云API方法&summary=&pics=http://yztian.top/img/avatar1.png&url=http://yztian.top/2017/08/26/aliyunAPI/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -492,7 +483,7 @@
 
     <!-- Share Telegram -->
     
-        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yztian.top/2017/08/25/CockroachDB/index.html&text=CockroachDB在docker下使用方法" target="_blank">
+        <a class="post_share-link" href="https://telegram.me/share/url?url=http://yztian.top/2017/08/26/aliyunAPI/index.html&text=GO语言调用阿里云API方法" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Telegram
             </li>
@@ -507,40 +498,21 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>Docker is a good friend！<br><a id="more"></a></p>
-<h1 id="CockroachDB"><a href="#CockroachDB" class="headerlink" title="CockroachDB"></a>CockroachDB</h1><h2 id="docker-安装："><a href="#docker-安装：" class="headerlink" title="docker 安装："></a>docker 安装：</h2><ul>
-<li><blockquote>
-<p>docker pull cockroachdb/cockroach:v1.0.4</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>docker run –rm cockroachdb/cockroach:v1.0.4 version</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="运行："><a href="#运行：" class="headerlink" title="运行："></a>运行：</h2><ul>
-<li><blockquote>
-<p>docker network create -d bridge roachnet</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>docker run -d –name=roach1 –hostname=roach1 –net=roachnet -p 26257:26257 -p 3306:3306 -v C:\Users\yzt\docker\roach:/cockroach/roach1 cockroachdb/cockroach:v1.0.4 start –insecure</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="进入："><a href="#进入：" class="headerlink" title="进入："></a>进入：</h2><ul>
-<li><blockquote>
-<p>docker start winston</p>
-</blockquote>
-</li>
-<li><blockquote>
-<p>docker exec -it roach1 ./cockroach sql –insecure</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户:"></a>创建用户:</h2> <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> core_acc <span class="keyword">WITH</span> <span class="keyword">PASSWORD</span> <span class="string">'J8Mct1UxL5'</span>;</div></pre></td></tr></table></figure>
-<h2 id="用户授权"><a href="#用户授权" class="headerlink" title="用户授权:"></a>用户授权:</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">INSERT</span>, <span class="keyword">UPDATE</span> <span class="keyword">ON</span> <span class="keyword">TABLE</span> winston.users <span class="keyword">TO</span> core_acc;</div><div class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">INSERT</span>, <span class="keyword">UPDATE</span> <span class="keyword">ON</span> <span class="keyword">TABLE</span> winston.messages <span class="keyword">TO</span> core_acc;</div></pre></td></tr></table></figure>
-<p><img src="https://www.cockroachlabs.com/uploads/2016/10/running-cockroachdb-on-kubernetes.png" alt="img"></p>
+        <p>  本文以新闻头条API为例介绍<br>  <a id="more"></a></p>
+<p>在<a href="https://market.aliyun.com/" target="_blank" rel="external">阿里云API市场</a>可以找到很多实用的API，有一些免费的可供我们练习使用，阿里云市场里的产品给了curl、Java、C#、PHP、Python、ObjectC这几种语言的示例，我参照其Java和Python的示例用go语言实现了API的使用。</p>
+<p>首先来看一下Java和Python的示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">    String host = &quot;http://toutiao-ali.juheapi.com&quot;;</div><div class="line">    String path = &quot;/toutiao/index&quot;;</div><div class="line">    String method = &quot;GET&quot;;</div><div class="line">    String appcode = &quot;你自己的AppCode&quot;;</div><div class="line">    Map&lt;String, String&gt; headers = new HashMap&lt;String, String&gt;();</div><div class="line">    //最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105</div><div class="line">    headers.put(&quot;Authorization&quot;, &quot;APPCODE &quot; + appcode);</div><div class="line">    Map&lt;String, String&gt; querys = new HashMap&lt;String, String&gt;();</div><div class="line">    querys.put(&quot;type&quot;, &quot;type&quot;);</div><div class="line"></div><div class="line"></div><div class="line">    try &#123;</div><div class="line">    	/**</div><div class="line">    	* 重要提示如下:</div><div class="line">    	* HttpUtils请从</div><div class="line">    	* https://github.com/aliyun/api-gateway-demo-sign-java/blob/master/src/main/java/com/aliyun/api/gateway/demo/util/HttpUtils.java</div><div class="line">    	* 下载</div><div class="line">    	*</div><div class="line">    	* 相应的依赖请参照</div><div class="line">    	* https://github.com/aliyun/api-gateway-demo-sign-java/blob/master/pom.xml</div><div class="line">    	*/</div><div class="line">    	HttpResponse response = HttpUtils.doGet(host, path, method, headers, querys);</div><div class="line">    	System.out.println(response.toString());</div><div class="line">    	//获取response的body</div><div class="line">    	//System.out.println(EntityUtils.toString(response.getEntity()));</div><div class="line">    &#125; catch (Exception e) &#123;</div><div class="line">    	e.printStackTrace();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib, urllib2, sys</div><div class="line"></div><div class="line"></div><div class="line">host = <span class="string">'http://toutiao-ali.juheapi.com'</span></div><div class="line">path = <span class="string">'/toutiao/index'</span></div><div class="line">method = <span class="string">'GET'</span></div><div class="line">appcode = <span class="string">'你自己的AppCode'</span></div><div class="line">querys = <span class="string">'type=type'</span></div><div class="line">bodys = &#123;&#125;</div><div class="line">url = host + path + <span class="string">'?'</span> + querys</div><div class="line"></div><div class="line">request = urllib2.Request(url)</div><div class="line">request.add_header(<span class="string">'Authorization'</span>, <span class="string">'APPCODE '</span> + appcode)</div><div class="line">response = urllib2.urlopen(request)</div><div class="line">content = response.read()</div><div class="line"><span class="keyword">if</span> (content):</div><div class="line">    print(content)</div></pre></td></tr></table></figure>
+<p>从两中代码中可以看到前面定义了一些连接需要的常量，之后调用了请求api的方法，当然go语言里一点也有相应的方法封装在go语言的库里，只是我们第一次使用时不知道，这时可以去golang官网的<a href="https://golang.org/pkg/" target="_blank" rel="external">package</a>里查询相应的方法，并且看其源码得知其使用方法。</p>
+<p>在appcode那里，因为go语言包里给的Header.Add函数只有两个参数，所以要注意不能用python中的三参数方法，要将APPCODE加在常量前并空一格。</p>
+<p>在最后需要用json.Unmarshal解析响应数据，传给前端标准的Json格式。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> newsHeadlines</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"encoding/json"</span></div><div class="line">	<span class="string">"io/ioutil"</span></div><div class="line">	<span class="string">"log"</span></div><div class="line">	<span class="string">"net/http"</span></div><div class="line"></div><div class="line">	<span class="string">"github.com/labstack/echo"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">const</span> (</div><div class="line">	host	 = <span class="string">"http://toutiao-ali.juheapi.com"</span></div><div class="line">	path	 = <span class="string">"/toutiao/index"</span></div><div class="line">	method	 = <span class="string">"GET"</span></div><div class="line">	appcode	 = <span class="string">"APPCODE e84e5f0a9341480fb16f2cfc8092a47b"</span></div><div class="line">	querys	 = <span class="string">"type="</span></div><div class="line">	Succeed	 = <span class="number">0</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">type</span> newsType <span class="keyword">struct</span> &#123;</div><div class="line">	NewsType <span class="keyword">string</span> <span class="string">`json:"type"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetNews</span><span class="params">(c echo.Context)</span> <span class="title">error</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> (</div><div class="line">		err       error</div><div class="line">		data      <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;</div><div class="line">		url       <span class="keyword">string</span></div><div class="line">		inputType newsType</div><div class="line">	)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> err = c.Bind(&amp;inputType); err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Println(<span class="string">"Input error"</span>)</div><div class="line"></div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	client := &amp;http.Client&#123;</div><div class="line">		CheckRedirect: <span class="literal">nil</span>,</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	url = host + path + <span class="string">"?"</span> + querys + inputType.NewsType</div><div class="line">	req, err := http.NewRequest(method, url, <span class="literal">nil</span>)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Println(<span class="string">"Request error"</span>)</div><div class="line"></div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	req.Header.Add(<span class="string">"Authorization"</span>, appcode)</div><div class="line">	resp, err := client.Do(req)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Println(<span class="string">"Client error"</span>)</div><div class="line"></div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	news, err := ioutil.ReadAll(resp.Body)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Println(<span class="string">"Read error"</span>)</div><div class="line"></div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	err = json.Unmarshal(news, &amp;data)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		log.Println(<span class="string">"Unmarshal error"</span>)</div><div class="line"></div><div class="line">		<span class="keyword">return</span> err</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> c.JSON(Succeed, &amp;data)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码采用echo框架方便一些基础操作的实现，阿里云给的<a href="https://apigateway.console.aliyun.com/inner/?spm=5176.730006-cmapi013650.102.10.zIBaq8#/cn-hangzhou/apps/testApi/9a4b8a5f00694c2d86a5a7777a880574/268c17f421144209b66539788425d1a6/RELEASE/24600450/CloudMarket" target="_blank" rel="external">debug调试平台</a>可以对我们的调试起到很大的帮助。</p>
+<p>最后将程序放到Postman里调试，按照api给的请求参数Query通过前端传一个新闻type值</p>
+<p><img src="/img/query.png" alt="query"></p>
+<p>以keji为例可得到JSON格式的数据传会给前端：</p>
+<p><img src="/img/keji.png" alt="keji"></p>
+<p>这样便成功用go语言调用了一个阿里云的api，其他的api使用也不在话下。</p>
 
     
 
@@ -558,8 +530,8 @@
     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://yztian.top/2017/08/25/CockroachDB/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://yztian.top/2017/08/25/CockroachDB/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://yztian.top/2017/08/26/aliyunAPI/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yztian.top/2017/08/26/aliyunAPI/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 <script type="text/ls-javascript" id="disqus-thread-script">
@@ -589,21 +561,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/08/26/aliyunAPI/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/08/25/elementaryOS loki/" id="post_nav-older" class="next-content">
+        <a href="/2017/08/25/CockroachDB/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
