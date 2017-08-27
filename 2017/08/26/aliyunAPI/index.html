@@ -74,7 +74,7 @@
 
     
         <meta property="article:published_time" content="Sat Aug 26 2017 18:52:05 GMT+0800" />
-        <meta property="article:modified_time" content="Sun Aug 27 2017 09:02:01 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Aug 27 2017 15:09:32 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -115,7 +115,7 @@
     "headline": "GO语言调用阿里云API方法",
     "url": "http://blog.yztian.top/2017/08/26/aliyunAPI/index.html",
     "datePublished": "Sat Aug 26 2017 18:52:05 GMT+0800",
-    "dateModified": "Sun Aug 27 2017 09:02:01 GMT+0800",
+    "dateModified": "Sun Aug 27 2017 15:09:32 GMT+0800",
     "description": "  本文以新闻头条API为例介绍",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -289,8 +289,7 @@
 
     <!-- Custom Head -->
     
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -502,7 +501,7 @@
         <p>  本文以新闻头条API为例介绍<br>  <a id="more"></a></p>
 <p>在<a href="https://market.aliyun.com/" target="_blank" rel="external">阿里云API市场</a>可以找到很多实用的API，有一些免费的可供我们练习使用，阿里云市场里的产品给了curl、Java、C#、PHP、Python、ObjectC这几种语言的示例，我参照其Java和Python的示例用go语言实现了API的使用。</p>
 <p>首先来看一下Java和Python的示例：</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         String host <span class="token operator">=</span> <span class="token string">"http://toutiao-ali.juheapi.com"</span><span class="token punctuation">;</span>
         String path <span class="token operator">=</span> <span class="token string">"/toutiao/index"</span><span class="token punctuation">;</span>
         String method <span class="token operator">=</span> <span class="token string">"GET"</span><span class="token punctuation">;</span>
@@ -532,8 +531,8 @@
             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> urllib<span class="token punctuation">,</span> urllib2<span class="token punctuation">,</span> sys
+</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> urllib<span class="token punctuation">,</span> urllib2<span class="token punctuation">,</span> sys
 
 
 host <span class="token operator">=</span> <span class="token string">'http://toutiao-ali.juheapi.com'</span>
@@ -550,11 +549,11 @@ response <span class="token operator">=</span> urllib2<span class="token punctua
 content <span class="token operator">=</span> response<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>从两段代码中可以看到前面定义了一些连接需要的常量，之后调用了请求api的方法，当然go语言里也有相应的方法封装在go语言的库里，只是我们第一次使用时不知道，这时可以去golang官网的<a href="https://golang.org/pkg/" target="_blank" rel="external">package</a>里查询相应的方法，并且看其源码得知其使用方法。</p>
 <p>在appcode那里，因为go语言包里给的Header.Add函数只有两个参数，所以要注意不能用python中的三参数方法，要将APPCODE加在常量前并空一格。</p>
 <p>在最后需要用json.Unmarshal解析响应数据，传给前端标准的Json格式。</p>
-<pre class="line-numbers language-go"><code class="language-go"><span class="token keyword">package</span> newsHeadlines
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> newsHeadlines
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
     <span class="token string">"encoding/json"</span>
@@ -628,7 +627,7 @@ content <span class="token operator">=</span> response<span class="token punctua
 
     <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">JSON</span><span class="token punctuation">(</span>Succeed<span class="token punctuation">,</span> <span class="token operator">&amp;</span>data<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>代码采用echo框架方便一些基础操作的实现，阿里云给的<a href="https://apigateway.console.aliyun.com/inner/?spm=5176.730006-cmapi013650.102.10.zIBaq8#/cn-hangzhou/apps/testApi/9a4b8a5f00694c2d86a5a7777a880574/268c17f421144209b66539788425d1a6/RELEASE/24600450/CloudMarket" target="_blank" rel="external">debug调试平台</a>可以对我们的调试起到很大的帮助。</p>
 <p>最后将程序放到Postman里调试，按照api给的请求参数Query通过前端传一个新闻type值</p>
 <p><img src="/img/query.png" alt="query"></p>
@@ -1001,6 +1000,10 @@ It will not impact the appearance and can give developers a lot of support :)
 </script>
 
 
+
+    
+        <script>lsloader.load("js/smoothscroll.js","/js/smoothscroll.js?tNQK2Tw2SUL8a1Scn/Mgew==")</script>
+    
 
 
 
