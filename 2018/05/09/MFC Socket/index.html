@@ -510,18 +510,7 @@
         <script src="\assets\js\APlayer.min.js"> </script><p>教材不更新的唯一好处—-可以在Debug时学习到很多东西。</p>
 <a id="more"></a>
 <p>网络程序设计与开发课程实验，老师按照老旧的教材，让用vc++6.0编写聊天的客户端与服务器，但我嫌弃vc++6.0太老而且丑，就决定vs2015，结果一切顺利的情况，但到最后测试时发送数据只能接收到一个字符，自己显示没有问题，开始怀疑时Socket.Receive()函数用错了，但查了很多文档，修改参数后没有任何变化。后来就决定用我的和舍友的在vc++6.0下的服务器连接，发现可以正常接收多字符，包括汉字。然后便开始研究Socket.Send()函数，发现在发送数字和字母时，只能接收一位，怀疑确定字符串长度的函数错了，插了断点一步步查发现并没有问题。后来发现在发汉字时，接收到的是多位乱码，然后便想到了编码不同导致乱码，然而我在编译器里将编码统一改成简体中文(GB2312) - 代码页936 和 Unicode(UTF-8 带签名) - 代码页65001都无法解决，还看到好多博客里说将CString转换发送什么的，但这些通过LPCTSTR已经转化了，最终找到了一段代码，用宏定义判断解决了这个问题，代码如下：</p>
-<pre class=" language-c++"><code class="language-c++">char * wsabuf = NULL;
-#ifdef _UNICODE
-    //CString转换成char*
-    USES_CONVERSION;
-    wsabuf = W2A(m_SendMsg);//m_SendMsg为CString消息
-    nLen = strlen(wsabuf);
-    nSent = m_sConnectSocket.Send(wsabuf, nLen);//发送数据
-#else
-    nLen = m_strMsg.GetLength();
-    nSent = m_sConnectSocket.Send(LPCTSTR(m_SendMsg), nLen);//发送数据
-#endif
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> * wsabuf = <span class="literal">NULL</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _UNICODE</span></span><br><span class="line">	<span class="comment">//CString转换成char*</span></span><br><span class="line">	USES_CONVERSION;</span><br><span class="line">	wsabuf = W2A(m_SendMsg);<span class="comment">//m_SendMsg为CString消息</span></span><br><span class="line">	nLen = <span class="built_in">strlen</span>(wsabuf);</span><br><span class="line">	nSent = m_sConnectSocket.Send(wsabuf, nLen);<span class="comment">//发送数据</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">	nLen = m_strMsg.GetLength();</span><br><span class="line">	nSent = m_sConnectSocket.Send(LPCTSTR(m_SendMsg), nLen);<span class="comment">//发送数据</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
 <p>嗯，舒服了，感觉这段代码还很简洁，所以记录。</p>
 <p> VC6.0中默认使用的是多字节编码，而从VS2005以后，默认使用的是Unicode字符编码方式，尤其在VS2013中还取消了对于多字节编码的支持，需要额外安装插件。如果使用多字节编码就不会遇到本文所说的问题，但是用Unicode字符编码方式也是有好处的，除了支持程序主题更美观，更重要的是统一编码标准。这或许就是vs中取消多字节编码的一个原因吧。</p>
 <p>通过这次不堪的经历，我决定把我的所有的实验都上传到github，希望学弟学妹们可以少走点弯路。</p>

@@ -589,14 +589,8 @@
 <blockquote>
 <p>sudo vi profile</p>
 </blockquote>
-<pre><code>export PATH=PATH:GOBIN
-
-export GOROOT=&quot;/usr/local/go&quot;
-
-export GOBIN=&quot;/usr/local/go/bin&quot;
-
-export GOPATH=&quot;/home/yzt/goproject&quot;
-</code></pre><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export PATH=PATH:GOBIN</span><br><span class="line"></span><br><span class="line">export GOROOT=&quot;/usr/local/go&quot;</span><br><span class="line"></span><br><span class="line">export GOBIN=&quot;/usr/local/go/bin&quot;</span><br><span class="line"></span><br><span class="line">export GOPATH=&quot;/home/yzt/goproject&quot;</span><br></pre></td></tr></table></figure>
+<ul>
 <li><h3 id="创建桌面启动器"><a href="#创建桌面启动器" class="headerlink" title="创建桌面启动器"></a>创建桌面启动器</h3></li>
 </ul>
 <blockquote>
@@ -605,28 +599,13 @@ export GOPATH=&quot;/home/yzt/goproject&quot;
 <blockquote>
 <p>sudo vim xxx.desktop</p>
 </blockquote>
-<pre class=" language-ubantu"><code class="language-ubantu">[Desktop Entry]
-
-Version=1.0
-
-Name=xxx
-
-Exec=/home/...
-
-Terminal=false
-
-Icon=/home/.../xxx.png
-
-Type=Application
-
-Categories=Development
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line"></span><br><span class="line">Version=1.0</span><br><span class="line"></span><br><span class="line">Name=xxx</span><br><span class="line"></span><br><span class="line">Exec=/home/...</span><br><span class="line"></span><br><span class="line">Terminal=false</span><br><span class="line"></span><br><span class="line">Icon=/home/.../xxx.png</span><br><span class="line"></span><br><span class="line">Type=Application</span><br><span class="line"></span><br><span class="line">Categories=Development</span><br></pre></td></tr></table></figure>
 <ul>
 <li>远程</li>
 </ul>
-<pre><code>sudo apt-get install openssh-server
-</code></pre><pre><code>$ssh root@xxx.xxx.xxx.xxx
-</code></pre><p>目前只用到这些，随时更…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ssh root@xxx.xxx.xxx.xxx</span><br></pre></td></tr></table></figure>
+<p>目前只用到这些，随时更…</p>
 
     
 

